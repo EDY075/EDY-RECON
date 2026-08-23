@@ -1,0 +1,16 @@
+# =====================================================================
+#  EDY RECON - Configuração do destino Kali (usada pelo sync_to_kali.sh)
+#  Copie este arquivo para "kali_target.conf" e preencha os valores.
+# =====================================================================
+
+# Usuário SSH no Kali (normalmente root ou kali)
+KALI_USER="kali"
+
+# IP ou hostname do Kali na rede
+KALI_HOST="192.0.2.10"
+
+# Pasta de instalação no Kali
+KALI_PATH="/opt/EDYRECON"
+
+# Porta SSH (padrão 22)
+KALI_PORT="22"

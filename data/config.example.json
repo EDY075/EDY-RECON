@@ -1,0 +1,41 @@
+{
+  "theme": "NEO",
+  "user_name": "Analista",
+  "api_keys": {
+    "hibp": "",
+    "intelx": "",
+    "dehashed_email": "",
+    "dehashed_key": "",
+    "hunter": "",
+    "virustotal": "",
+    "emailrep": "",
+    "shodan": "",
+    "urlscan": "",
+    "otx": "",
+    "ipinfo": ""
+  },
+  "ai": {
+    "provider": "skynet",
+    "base_url": "",
+    "api_key": "",
+    "model": "",
+    "email": "",
+    "password": "",
+    "session_id": "",
+    "provider_keys": {}
+  },
+  "wordlists": [],
+  "bruteforce": {
+    "threads": 8,
+    "delay": 0.4,
+    "timeout": 10,
+    "max_passwords": 1000000
+  },
+  "scan": {
+    "variants_to_check": 12,
+    "intelx_results": 20,
+    "dehashed_results": 50,
+    "crtsh_limit": 200
+  },
+  "last_emails": []
+}

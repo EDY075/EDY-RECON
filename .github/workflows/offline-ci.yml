@@ -1,0 +1,48 @@
+name: Offline validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-tests:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      NO_COLOR: "1"
+      EDYRECON_ASCII: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      PIP_NO_INPUT: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Audit exact public allowlist and secrets
+        run: python -B tests/verify_public_release.py
+
+      - name: Create isolated environment and install declared dependencies
+        run: |
+          python -m venv .venv
+          .venv\Scripts\python -m pip install --no-cache-dir -r requirements.txt
+
+      - name: Validate Bash syntax
+        shell: bash
+        run: |
+          bash -n EDYRECON.sh
+          bash -n kali_install.sh
+          bash -n kali_pos_install.sh
+          bash -n sync_to_kali.sh
+
+      - name: Run 40 offline tests
+        run: .venv\Scripts\python -B -m unittest discover -s tests -p "test_*.py" -v
