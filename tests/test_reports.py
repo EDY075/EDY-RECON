@@ -5,6 +5,7 @@ import pathlib
 import re
 import tempfile
 import unittest
+from urllib.parse import unquote, urlsplit
 from unittest.mock import patch
 
 import offline_guard  # noqa: F401 — bloqueia rede antes dos imports do projeto
@@ -135,12 +136,24 @@ class ReportTests(unittest.TestCase):
             html_path.write_text("<html></html>", encoding="utf-8")
             with patch.object(edyrecon.os, "name", "nt"), patch.object(edyrecon.subprocess, "Popen") as popen:
                 self.assertTrue(edyrecon._open_saved_report(txt_path))
-                popen.assert_called_once_with(["notepad.exe", str(txt_path.resolve())], close_fds=True)
+                popen.assert_called_once()
+                argv = popen.call_args.args[0]
+                self.assertIsInstance(argv, list)
+                self.assertEqual(len(argv), 2)
+                self.assertEqual(argv[0], "notepad.exe")
+                self.assertTrue(os.path.samefile(argv[1], txt_path))
+                self.assertEqual(popen.call_args.kwargs, {"close_fds": True})
             with patch.object(edyrecon.webbrowser, "open", return_value=True) as browser:
                 self.assertTrue(edyrecon._open_saved_report(html_path))
                 called = browser.call_args.args[0]
                 self.assertTrue(called.startswith("file:///"))
                 self.assertNotIn(" ", called)
+                parsed = urlsplit(called)
+                self.assertEqual((parsed.scheme, parsed.netloc, parsed.query, parsed.fragment), ("file", "", "", ""))
+                decoded_path = unquote(parsed.path)
+                if os.name == "nt" and re.match(r"^/[A-Za-z]:/", decoded_path):
+                    decoded_path = decoded_path[1:]
+                self.assertTrue(os.path.samefile(decoded_path, html_path))
 
 
 if __name__ == "__main__":
