@@ -22,6 +22,7 @@ MAX_PUBLIC_BYTES = 10 * 1024 * 1024
 
 PUBLIC_FILES = {
     ".env.example",
+    ".gitattributes",
     ".github/workflows/offline-ci.yml",
     ".gitignore",
     "ACCEPTABLE_USE.md",
