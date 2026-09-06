@@ -1,7 +1,11 @@
+![EDY RECON — Authorized OSINT and Reconnaissance Toolkit](docs/assets/edy-recon-banner.png)
+
 # EDY RECON 1.1.0
 
 > OSINT, análise de superfície e testes controlados de credenciais para uso
 > profissional autorizado.
+
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white) ![Windows](https://img.shields.io/badge/Windows-supported-0078D4?style=flat-square&logo=windows11) ![Kali](https://img.shields.io/badge/Kali-implemented-557C94?style=flat-square&logo=kalilinux&logoColor=white) ![Tests](https://img.shields.io/badge/offline_tests-40%2F40-2EA44F?style=flat-square) ![License](https://img.shields.io/badge/License-MIT-F0A43C?style=flat-square)
 
 Ferramenta de reconhecimento OSINT e teste de credenciais para profissionais de
 segurança com **autorização formal**. Inclui base de vazamentos de dados
@@ -11,6 +15,12 @@ varredura de dark web e brute force (SSH/FTP/HTTP-FORM).
 > **Uso autorizado obrigatório:** execute somente em ativos próprios ou cobertos
 > por autorização formal, com escopo, janela e limites definidos por escrito.
 > Consulte [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md) antes de operar módulos de rede.
+
+## Demonstração
+
+![Menu real do EDY RECON executado sem rede e com dados sintéticos](docs/screenshots/terminal-menu.png)
+
+A captura acima foi produzida pela própria interface em modo ASCII e sem cor. Nenhuma rede, credencial, sessão, relatório privado ou alvo real foi usado.
 
 ## Status de validação
 
