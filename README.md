@@ -16,6 +16,10 @@ varredura de dark web e brute force (SSH/FTP/HTTP-FORM).
 > por autorização formal, com escopo, janela e limites definidos por escrito.
 > Consulte [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md) antes de operar módulos de rede.
 
+## Apresentação em vídeo
+
+https://github.com/user-attachments/assets/5d967786-ff50-4c72-ac35-591681957867
+
 ## Demonstração
 
 ![Menu real do EDY RECON executado sem rede e com dados sintéticos](docs/screenshots/terminal-menu.png)
